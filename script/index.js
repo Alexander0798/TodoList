@@ -212,7 +212,6 @@ const createObj = (textValue) => {
     todoText: textValue,
     checked: false
   }
-  console.log(localArrTodo)
   localArrTodo.push(obj)
   return localArrTodo
 }
