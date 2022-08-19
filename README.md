@@ -12,4 +12,4 @@
 
 **Проект**
 
-* [Ссылка на Проект - TodoList](https://github.com/Alexander0798/TodoList/index.html)
+* [Ссылка на Проект - TodoList](https://alexander0798.github.io/TodoList/index.html)
