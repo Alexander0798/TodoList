@@ -109,7 +109,11 @@ const offCheckbox = (element) => {
 const getLocalArray = () => {
   const localArrTodo = localStorage.getItem('todoList')
   const objLocalarr = JSON.parse(localArrTodo)
+  if(objLocalarr !== null) {
   return objLocalarr
+  } else {
+    return []
+  }
 }
 
 // меняю состояние всех чекбоксов локально 
@@ -208,6 +212,7 @@ const createObj = (textValue) => {
     todoText: textValue,
     checked: false
   }
+  console.log(localArrTodo)
   localArrTodo.push(obj)
   return localArrTodo
 }
