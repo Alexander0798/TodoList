@@ -280,7 +280,7 @@ const generateEventListner = (element) => {
 
 // собераю пункт списка дела
 
-const generateItem = ({text, checked=false}) => {
+const generateItem = ({ text, checked = false }) => {
   const itemElement = document.querySelector('#item-temlate').content.querySelector('.todos__item').cloneNode(true)
   itemElement.querySelector('.todos__text').textContent = text
   itemElement.querySelector('.todos__checkbox').checked = checked
@@ -306,7 +306,7 @@ const editItemElement = (element) => {
   const editElement = (evt) => {
     if (evt.target !== inputElement) {// функция удаления поля ввода и добавление изменнёного пункта дел
       inputElement.remove()
-      container.before(generateItem({text: textContent}))
+      container.before(generateItem({ text: textContent }))
       container.remove()
       document.removeEventListener('click', editElement)
     }
@@ -318,7 +318,7 @@ const editItemElement = (element) => {
       editTextLocal(inputElement.value, getIndexElement(evt.target))
       textContent = inputElement.value
       inputElement.remove()
-      container.before(generateItem({text: textContent}))
+      container.before(generateItem({ text: textContent }))
       container.remove()
       document.removeEventListener('click', editElement)
       inputElement.addEventListener('keydown', (evt))
@@ -329,9 +329,11 @@ const editItemElement = (element) => {
 // наполняю лист дел пунктами из локал 
 {
   const localArrTodo = getLocalArray()
-  localArrTodo.forEach((item) => {
-    todoContainer.append(generateItem({text: item.todoText, checked: item.checked}))
-  })
+  if (localArrTodo !== null) {
+    localArrTodo.forEach((item) => {
+      todoContainer.append(generateItem({ text: item.todoText, checked: item.checked }))
+    })
+  }
 }
 switchButtonActive()
 checkingItems()
@@ -341,7 +343,7 @@ getNumberItems()
 addEventListener('submit', (evt) => {
   evt.preventDefault()
   if (todosInput.value.trim().length > 0) {
-    todoContainer.append(generateItem({text: todosInput.value}))
+    todoContainer.append(generateItem({ text: todosInput.value }))
     localStorage.setItem('todoList', JSON.stringify(createObj(todosInput.value)))
     getNumberItems()
     switchButtonActive()
