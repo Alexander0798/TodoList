@@ -1,0 +1,403 @@
+@font-face {
+  font-family: "Inter";
+  src: url(../font/Inter-Black.woff), url(../font/Inter-Black.woff2);
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Inter";
+  src: url(../font/Inter-Regular.woff), url(../font/Inter-Regular.woff2);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Inter";
+  src: url(../font/Inter-Bold.woff2), url(../font/Inter-Bold.woff);
+  font-weight: 700;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #4d4d4d;
+  font: 14px "Inter", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+
+.page {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  margin: 0 10px;
+  box-sizing: border-box;
+}
+
+.header {
+  grid-area: header;
+  &__title {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 70px;
+    color: rgba(175, 47, 47, 0.15);
+  }
+}
+
+.main {
+  grid-area: main;
+}
+
+.todos {
+  box-sizing: content-box;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  margin: 0 10px;
+  max-width: 550px;
+  margin: 0 auto;
+
+  &__form {
+    display: flex;
+    transform: 90deg;
+    background-color: #fff;
+  }
+
+  &__button {
+    opacity: 0;
+    font-size: 22px;
+    color: #e6e6e6;
+    padding: 10px 27px 10px 27px;
+    font-weight: 900;
+    transform: rotate(90deg);
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px 16px 16px 10px;
+    font-size: 18px;
+    line-height: 1.4;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    color: inherit;
+    &::placeholder {
+      opacity: 0.2;
+      font-style: italic;
+      font-family: inherit;
+    }
+  }
+
+  &__item {
+    display: flex;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    align-items: center;
+    font-size: 24px;
+  }
+
+  &__checkbox {
+    position: relative;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    margin: 0 0 0 15px;
+    cursor: pointer;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 25px;
+      border: 1px solid hsl(0, 0%, 44%);
+      border-radius: 100%;
+      background-size: cover;
+      top: -12px;
+      left: 0px;
+    }
+    &:checked::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 25px;
+      border: 1px solid hsl(90, 100%, 25%);
+      border-radius: 100%;
+      background: url("../image/png-clipart-check-mark-graphy-computer-icons-others-angle-leaf.png")
+        center / 85% no-repeat;
+      left: 0;
+      top: -13px;
+    }
+  }
+
+  &__text {
+    border: none;
+    width: 100%;
+    word-break: break-all;
+    margin: 0 0 0 60px;
+    padding: 15px 0 15px 0px;
+  }
+
+  &__button-delete {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    margin: 0 15px;
+    opacity: 0;
+    cursor: pointer;
+    &::after {
+      content: "";
+      height: 4px;
+      background-color: rgb(175, 47, 47);
+      position: absolute;
+      width: 100%;
+      top: 45%;
+      left: 0;
+      transform: rotate(45deg);
+    }
+    &::before {
+      content: "";
+      height: 4px;
+      background-color: rgb(175, 47, 47);
+      position: absolute;
+      width: 100%;
+      top: 45%;
+      left: 0;
+      transform: rotate(-45deg);
+    }
+  }
+  &__item:hover .todos__button-delete {
+    opacity: 0.3;
+    transition: linear 0.3s;
+  }
+  &__item .todos__button-delete:hover {
+    opacity: 1;
+    transition: linear 0.3s;
+  }
+}
+.button {
+  border: none;
+  background-color: transparent;
+  &__active {
+    color: rgb(34, 185, 3);
+  }
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navigation {
+  font-size: 12px;
+  display: none;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  &__numbers {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__list {
+    display: flex;
+    margin: 0 auto;
+  }
+
+  &__link {
+    padding: 5px 7px;
+    margin: 0 3px;
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      border: 1px solid rgba(121, 0, 0, 0.116);
+      border-radius: 4px;
+      margin: 0 2px;
+    }
+  }
+
+  &__button-clear {
+    padding: 0;
+    font-size: inherit;
+    opacity: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.link-active {
+  border: 1px solid rgba(121, 0, 0, 0.322);
+  border-radius: 4px;
+  margin: 0 2px;
+  &:hover {
+    border: 1px solid rgba(121, 0, 0, 0.322);
+  }
+}
+.decor {
+  position: relative;
+  display: none;
+  &::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: none;
+    top: 0;
+    left: 5px;
+    width: 98%;
+    height: 5px;
+    margin: auto;
+    background: #fff;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: none;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.5);
+    width: 96%;
+    top: 5px;
+    left: 10px;
+    height: 5px;
+    margin: auto;
+    background: #fff;
+  }
+}
+.aside {
+  margin: 15px 0 0;
+  padding: 10px;
+  display: none;
+  grid-area: aside;
+  max-width: 280px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+
+  &__item {
+    &:not(:last-child) {
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      border-bottom: dashed 1px rgba(0, 0, 0, 0.199);
+    }
+  }
+  &__title {
+    font-size: 24px;
+    margin: 10px 0;
+    font-weight: 900;
+    line-height: 1.2;
+    color: black;
+  }
+
+  &__suptitle {
+    margin: 0;
+    color: black;
+  }
+
+  &__figure {
+    margin: 0;
+  }
+
+  &__blockquote {
+    background-color: #dddddd;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 0;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.3;
+    font-style: italic;
+    &::after {
+      content: "\201F";
+      font-family: Arial, Helvetica, sans-serif;
+      position: absolute;
+      top: -20px;
+      left: 5px;
+      font-size: 50px;
+    }
+    &::before {
+      content: "\201C";
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 50px;
+      position: absolute;
+      bottom: -45px;
+      right: 10px;
+    }
+  }
+
+  &__figcaption {
+    margin: 20px 0 0;
+    text-align: right;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      right: 30px;
+      bottom: 10px;
+      border: 15px solid transparent;
+      border-top: 15px solid #dddddd;
+    }
+  }
+
+  &__link {
+    color: rgb(180, 0, 0);
+    text-decoration: none;
+    z-index: 100;
+  }
+
+  &__feedback {
+    margin: 0;
+    font-style: italic;
+  }
+}
+.footer {
+  color: #bfbfbf;
+  grid-area: footer;
+  text-align: center;
+  margin: 20px 0 10px;
+  font-size: 10px;
+  text-shadow: 0 1px 0 #bfbfbf83;
+}
+.link {
+  color: inherit;
+}
+.text-line {
+  transition: linear 0.3s;
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+
+.input {
+  width: 100%;
+  margin: 0 0 0 50px;
+  padding: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  display: block;
+}
+@media (min-width: 1024px) {
+  .page {
+    grid-template-areas:
+      "aside header"
+      "aside main"
+      ". footer";
+    grid-template-columns: auto 1fr;
+  }
+  .aside {
+    display: block;
+  }
+  .header__title {
+    font-size: 100px;
+  }
+  .todos__input {
+    font-size: 24px;
+  }
+  .navigation {
+    font-size: 14px;
+    &__numbers {
+      font-size: 16px;
+    }
+  }
+}

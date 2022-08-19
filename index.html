@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>TodoList</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <h1 class="header__title">todos</h1>
+      </header>
+      <main class="main">
+        <section class="todos" aria-label="Секция со списком дел">
+          <form action="#" name="todolist" class="todos__form">
+            <button type="button" class="todos__button button">❯</button>
+            <input
+              type="text"
+              name="todoinput"
+              class="todos__input"
+              placeholder="What needs to be done?"
+              autofocus
+            />
+          </form>
+          <ul class="todos__list list"></ul>
+          <nav class="todos__navigation navigation">
+            <h2 class="navigation__numbers">#</h2>
+            <ul class="navigation__list list">
+              <li class="navigation__item">
+                <a class="navigation__link link-active" href="#" id="All">All</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link" href="#" id="Active">Active</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link" href="#" id="Completed">Completed</a>
+              </li>
+            </ul>
+            <button class="navigation__button-clear button">Clear completed</button>
+          </nav>
+          <div class="decor"></div>
+        </section>
+      </main>
+      <aside class="aside">
+        <ul class="aside__list list">
+          <li class="aside__item">
+            <h2 class="aside__title">JavaScript</h2>
+            <p class="aside__suptitle">Vanilla JavaScript Example</p>
+            <a
+              href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs"
+              target="_blank"
+              >Source</a
+            >
+          </li>
+          <li class="aside__item">
+            <figure class="aside__figure">
+              <blockquote class="aside__blockquote">
+                JavaScript® (often shortened to JS) is a lightweight,
+                interpreted, object-oriented language with first-class
+                functions, most known as the scripting language for Web pages,
+                but used in many non-browser environments as well such as
+                node.js or Apache CouchDB.
+              </blockquote>
+              <figcaption class="aside__figcaption">
+                <a class="aside__link"
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+                  target="_blank"
+                  >JavaScript</a
+                >
+              </figcaption>
+            </figure>
+          </li>
+          <li class="aside__item">
+            <p class="aside__feedback">
+              If you have other helpful links to share, or find any of the links
+              above no longer work, please
+              <a
+                href="https://github.com/tastejs/todomvc/issues"
+                target="_blank"
+                >let us know</a
+              >
+            </p>
+          </li>
+        </ul>
+      </aside>
+      <footer class="footer">
+        <ul class="footer__list list">
+          <li class="footer__item">Double-click to edit a todo</li>
+          <li class="footer__item">
+            Created by
+            <a href="https://twitter.com/oscargodson" target="_blank" class="footer__link link"
+              >Oscar Godson</a
+            >
+          </li>
+          <li class="footer__item">
+            Refactored by
+            <a href="https://github.com/cburgmer" target="_blank" class="footer__link link"
+              >Christoph Burgmer</a
+            >
+          </li>
+          <li class="footer__item">
+            Part of
+            <a href="https://todomvc.com/" target="_blank" class="footer__link link">TodoMVC</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+    <template id="item-temlate">
+      <li class="todos__item">
+        <input type="checkbox" class="todos__checkbox" />
+        <p class="todos__text"></p>
+        <button class="todos__button-delete button" type="button"></button>
+      </li>
+    </template>
+    <template id="input-temlate">
+      <input type="text" name="inputEdite" class="input" value="" />
+    </template>
+    <script src="./script/index.js"></script>
+  </body>
+</html>
